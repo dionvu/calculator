@@ -24,11 +24,12 @@ let displayUi = document.querySelector("#display-text");
 let num1 = '0';
 let num2 = '0';
 let operation;
-let result;
+let calculation;
 
 let numbersUi = document.querySelectorAll(".numbers");
 let operationsUi = document.querySelectorAll(".operations");
-
+let acUi = document.querySelector("#AC");
+let signUi = document.querySelector("#sign");
 
 operationsUi.forEach(operation => {
     operation.addEventListener("click", (e) => {
@@ -44,6 +45,49 @@ numbersUi.forEach(number => {
     });
 });
 
+acUi.addEventListener("click", () => {
+    num1 = '0';
+    num2 = '0';
+    operation = null;
+    result = null;
+    displayUi.textContent = '0';
+    console.log("Everything cleared");
+});
+
+signUi.addEventListener("click", () => {
+    // Sign Switching for the result of calculation
+    if(displayUi.textContent == calculation) {
+        calculation = calculation * -1; 
+        console.log("sign switched");
+        displayUi.textContent = calculation;
+    }
+    // Sign switching for num1
+    if(displayUi.textContent == num1 || displayUi.textContent == '-' + num1) {
+        if(displayUi.textContent.substring(0,1) != '-') {
+            num1 = '-' + num1;
+            console.log("sign switched");
+            displayUi.textContent = num1;
+        }
+        else {
+            num1 = num1.substring(1);
+            console.log("sign switched");
+            displayUi.textContent = num1;
+        }
+    }
+    // Sign switching for num2 
+    if(displayUi.textContent == num2 || displayUi.textContent == '-' + num2) {
+        if(displayUi.textContent.substring(0,1) != '-') {
+            num2 = '-' + num2;
+            console.log("sign switched");
+            displayUi.textContent = num2;
+        }
+        else {
+            num2 = num1.substring(1);
+            console.log("sign switched");
+            displayUi.textContent = num2;
+        }
+    }
+});
 
 function addDigit(number) {
     // If operation is null then num1 wasn't chosen yet 
@@ -106,7 +150,8 @@ function performOperation(nextOperation) {
     else if(operation == MULTIPLY) { result = multiply(n1, n2); }
     else { result = divide(n1, n2); }
     
-    displayUi.textContent = result;
+    calculation = result;
+    displayUi.textContent = calculation;
     num1 = add(n1, n2);
     num2 = '0';
 
