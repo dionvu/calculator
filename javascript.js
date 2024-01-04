@@ -63,7 +63,7 @@ function addDigit(number) {
         else {
             num1 += number.textContent;
         }
-    
+        displayUi.textContent = num1;  
     }
     else {
         // Display max digits is 10
@@ -81,6 +81,7 @@ function addDigit(number) {
         else {
             num2 += number.textContent;
         }
+        displayUi.textContent = num2;  
     }
 }
 
@@ -98,8 +99,14 @@ function changeOperation(button) {
 function performOperation(nextOperation) {
     let n1 = parseInt(num1);
     let n2 = parseInt(num2);
+    let result; 
 
-    displayUi.textContent = add(n1, n2);
+    if(operation == PLUS) { result = add(n1, n2); }
+    else if(operation == MINUS) { result = subtract(n1, n2); }
+    else if(operation == MULTIPLY) { result = multiply(n1, n2); }
+    else { result = divide(n1, n2); }
+    
+    displayUi.textContent = result;
     num1 = add(n1, n2);
     num2 = '0';
 
