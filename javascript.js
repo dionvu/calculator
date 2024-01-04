@@ -42,6 +42,7 @@ numbersUi.forEach(number => {
         addDigit(e.target);
         console.log("num1: " + num1);
         console.log("num2: " + num2);
+        console.log("calc: " + calculation);
     });
 });
 
@@ -115,7 +116,7 @@ function addDigit(number) {
             return;
         }
         // Number can only have one decimal point
-        if(number.textContent == '.' && num1.includes('.')) {
+        if(number.textContent == '.' && num2.includes('.')) {
             return; 
         }
         // Adds digit to the end of string
@@ -141,8 +142,8 @@ function changeOperation(button) {
 }
 
 function performOperation(nextOperation) {
-    let n1 = parseInt(num1);
-    let n2 = parseInt(num2);
+    let n1 = parseFloat(num1);
+    let n2 = parseFloat(num2);
     let result; 
 
     if(operation == PLUS) { result = add(n1, n2); }
@@ -150,13 +151,31 @@ function performOperation(nextOperation) {
     else if(operation == MULTIPLY) { result = multiply(n1, n2); }
     else { result = divide(n1, n2); }
     
+    result = checkOverFlow(result); 
+
     calculation = result;
     displayUi.textContent = calculation;
-    num1 = add(n1, n2);
+    num1 = result;
     num2 = '0';
 
     if(nextOperation != EQUAL) {
         operation = nextOperation;
         console.log("Operation: " + operation);
     }
+
+    logAll();
+    
+}
+
+function checkOverFlow(num) {
+    if(num.toString().length > 10) {
+        return num.toString().substring(0, 10);
+    }
+    return num;
+}
+
+function logAll() {
+    console.log("num1: " + num1);
+    console.log("num2: " + num2);
+    console.log("calc: " + calculation);
 }
