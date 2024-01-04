@@ -1,0 +1,70 @@
+body,
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#frame {
+    display: flex;
+    flex-direction: column;
+    border: 10px solid black;
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+}
+
+#display {
+    border-bottom: 10px solid black;
+    background: lightgrey;
+    width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#result {
+    margin: 10px;
+    font-size: 70px;
+}
+
+#buttons {
+    display:flex;
+    flex-direction: column;
+    background: black;
+    width: 400px;
+    height: 400px;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    height: 20%;
+}
+
+.row button {
+    flex: 1;
+    font-weight: 200;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+#zero {
+    flex-basis: 111px;
+}
+
+#divide, #multiply, #add, #subtract, #equal, #minus {
+    background: lightblue;
+}
+
+#AC, #sign, #percent {
+    background: lightpink;
+}
+
+#seven, #eight, #nine, #four, #five, #six, #one, #two, #three, #zero, #decimal {
+    background: lightyellow;
+}
