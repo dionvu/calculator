@@ -5,6 +5,7 @@ html {
     align-items: center;
     height: 100%;
     width: 100%;
+    background: #d2d5dd;
 }
 
 #frame {
@@ -18,7 +19,7 @@ html {
 
 #display {
     border-bottom: 10px solid black;
-    background: lightgrey;
+    background: #F2F5EA;
     width: 400px;
     height: 100px;
     display: flex;
@@ -58,13 +59,13 @@ html {
 }
 
 #divide, #multiply, #add, #subtract, #equal, #minus {
-    background: lightblue;
+    background: #a6a6a8;
 }
 
 #AC, #sign, #percent {
-    background: lightpink;
+    background: #CECECE;
 }
 
 .numbers {
-    background: lightyellow;
+    background: #E8E9F3;
 }
