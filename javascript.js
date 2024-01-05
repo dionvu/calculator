@@ -30,6 +30,7 @@ let numbersUi = document.querySelectorAll(".numbers");
 let operationsUi = document.querySelectorAll(".operations");
 let acUi = document.querySelector("#AC");
 let signUi = document.querySelector("#sign");
+let percentUi = document.querySelector("#percent");
 
 operationsUi.forEach(operation => {
     operation.addEventListener("click", (e) => {
@@ -88,6 +89,26 @@ signUi.addEventListener("click", () => {
             displayUi.textContent = num2;
         }
     }
+});
+
+percentUi.addEventListener("click", () => {
+    console.log("10");
+    if(displayContent() == num1) {
+        num1 = (parseFloat(num1) / 100).toString();
+        num1 = checkOverFlow(num1);
+        displayUi.textContent = num1;
+    }
+    else if(displayContent() == num2) {
+        num2 = (parseFloat(num2) / 100).toString();
+        num2 = checkOverFlow(num2);
+        displayUi.textContent = num2;
+    }
+    else if(displayContent() == calculation) {
+        calculation = (parseFloat(calculation) / 100).toString();
+        calculation = checkOverFlow(calculation);
+        displayUi.textContent = calculation;
+    }
+    else; 
 });
 
 function addDigit(number) {
@@ -180,4 +201,8 @@ function logAll() {
     console.log("num1: " + num1);
     console.log("num2: " + num2);
     console.log("calc: " + calculation);
+}
+
+function displayContent() {
+    return displayUi.textContent;
 }
