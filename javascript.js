@@ -83,7 +83,7 @@ signUi.addEventListener("click", () => {
             displayUi.textContent = num2;
         }
         else {
-            num2 = num1.substring(1);
+            num2 = num2.substring(1);
             console.log("sign switched");
             displayUi.textContent = num2;
         }
@@ -149,7 +149,8 @@ function performOperation(nextOperation) {
     if(operation == PLUS) { result = add(n1, n2); }
     else if(operation == MINUS) { result = subtract(n1, n2); }
     else if(operation == MULTIPLY) { result = multiply(n1, n2); }
-    else { result = divide(n1, n2); }
+    else if(operation == DIVIDE) { result = divide(n1, n2); }
+    else return;
     
     result = checkOverFlow(result); 
 
@@ -162,6 +163,7 @@ function performOperation(nextOperation) {
         operation = nextOperation;
         console.log("Operation: " + operation);
     }
+    else { operation = null; }
 
     logAll();
     
